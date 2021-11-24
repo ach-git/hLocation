@@ -66,7 +66,11 @@ OpenLocation = function(ped)
                                 onSelected = function()
                                     LocationOpened = false
                                     RageUI.CloseAll()
-                                    TriggerServerEvent("hLocation:location", v, ped)
+                                    if ESX.Game.IsSpawnPointClear(ped.pos, 2) then
+                                        TriggerServerEvent("hLocation:location", v, ped)
+                                    else
+                                        ESX.ShowNotification("~r~Un vehicule est deja sorti!", 0, 0)
+                                    end
                                 end
                             })
                         end
